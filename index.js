@@ -1,11 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const imageRouter = require('./routes/imageRoutes');
 const uploadRouter = require('./routes/uploadRoutes');
-//const Image = require('./model/model');
 const port = process.env.PORT || 2222;
 
 const app = express();
@@ -19,9 +17,9 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     });
 
 
-app.use(cors())
-app.use(bodyParser.json({ limit: '5mb' }));
-app.use(bodyParser.urlencoded({ extended: true, limit: '5mb' }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use('/api/upload', uploadRouter);
 app.use('/api/images', imageRouter);
 
