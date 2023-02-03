@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 const imageRouter = require('./routes/imageRoutes');
 const uploadRouter = require('./routes/uploadRoutes');
 //const Image = require('./model/model');
-const port = 2222;
+const port = process.env.PORT || 2222;
 
 const app = express();
 dotenv.config();
